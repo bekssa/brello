@@ -20,9 +20,6 @@ type Pages = {
   "/signup": {
     params: {};
   };
-  "/rooms": {
-    params: {};
-  };
   "/profile": {
     params: {};
   };
@@ -31,16 +28,19 @@ type Pages = {
       "id": string;
     };
   };
+  "/rooms": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/login" | "/signup" | "/rooms" | "/profile" | "/room/:id";
+    page: "/" | "/login" | "/signup" | "/profile" | "/room/:id" | "/rooms";
   };
   "./layouts/BaseLayout.tsx": {
     id: "layouts/BaseLayout";
-    page: "/" | "/login" | "/signup" | "/rooms" | "/profile" | "/room/:id";
+    page: "/" | "/login" | "/signup" | "/profile" | "/room/:id" | "/rooms";
   };
   "../pages/hero/ui/Page.tsx": {
     id: "../pages/hero/ui/Page";
@@ -54,10 +54,6 @@ type RouteFiles = {
     id: "../pages/signup/ui/Page";
     page: "/signup";
   };
-  "../pages/rooms/ui/Page.tsx": {
-    id: "../pages/rooms/ui/Page";
-    page: "/rooms";
-  };
   "../pages/profile/ui/Page.tsx": {
     id: "../pages/profile/ui/Page";
     page: "/profile";
@@ -65,6 +61,14 @@ type RouteFiles = {
   "../pages/room/ui/Page.tsx": {
     id: "../pages/room/ui/Page";
     page: "/room/:id";
+  };
+  "./providers/auth-guard.tsx": {
+    id: "providers/auth-guard";
+    page: "/rooms";
+  };
+  "../pages/rooms/ui/Page.tsx": {
+    id: "../pages/rooms/ui/Page";
+    page: "/rooms";
   };
 };
 
@@ -74,7 +78,8 @@ type RouteModules = {
   "../pages/hero/ui/Page": unknown;
   "../pages/login/ui/Page": unknown;
   "../pages/signup/ui/Page": unknown;
-  "../pages/rooms/ui/Page": unknown;
   "../pages/profile/ui/Page": unknown;
   "../pages/room/ui/Page": unknown;
+  "providers/auth-guard": typeof import("./src/app/./providers/auth-guard.tsx");
+  "../pages/rooms/ui/Page": unknown;
 };
